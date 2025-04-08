@@ -1,3 +1,4 @@
+<!-- Replace the previous login.html with this -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,16 +48,40 @@
     button:hover {
       background-color: #1976d2;
     }
+    .error {
+      color: red;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <div class="login-box">
     <h2>Login</h2>
-    <form onsubmit="event.preventDefault(); window.location.href='index.html';">
-      <input type="text" placeholder="Username" required />
-      <input type="password" placeholder="Password" required />
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Login</button>
+      <div class="error" id="errorMsg"></div>
     </form>
   </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      // SET YOUR USERNAME AND PASSWORD HERE
+      if (user === "Bimlesh" && pass === "9807") {
+        window.location.href = "index.html";
+      } else {
+        errorMsg.textContent = "Invalid username or password!";
+      }
+    });
+  </script>
 </body>
 </html>
